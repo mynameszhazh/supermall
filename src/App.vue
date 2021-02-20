@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <miantarbar></miantarbar>
+    <miantarbar class="miantarbar"></miantarbar>
     <router-view/>
   </div>
 </template>
@@ -17,4 +17,7 @@ export default {
 </script>
 <style lang="scss">
   @import 'assets/css/base.css';
+  .miantarbar{
+    z-index: 5;
+  }
 </style>
