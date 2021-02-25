@@ -35,7 +35,7 @@ export default {
   },
   methods: {
     itemchange () {
-      this.$router.push(this.path).catch(() => {})
+      this.$router.replace(this.path).catch(() => {})
     }
   }
 }

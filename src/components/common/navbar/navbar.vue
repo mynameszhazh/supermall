@@ -26,6 +26,6 @@ export default {
   .center {
     flex: 1;
     font-size: 20px;
-    color: white;
+    color: gray;
   }
 </style>

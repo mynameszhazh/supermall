@@ -118,7 +118,17 @@ export default {
   mounted () {
     // 注意点 想要获取到这个dom元素的话 再create里面可获取不到 必须在mounted里面 他已经将我的dom元素放在页面上了
     this.scroll = new BScroll(this.$refs.aaa, {
-
+      probeType: 3,
+      click: true,
+      pullUpLoad: true
+    })
+    this.scroll.on('scroll', option => {
+      // console.log(option)
+    })
+    this.scroll.on('pullingUp', () => {
+      console.log('上拉加载页面')
+      // 控制我可以重复加载我的页面
+      this.scroll.finishPullUp()
     })
   }
 }
@@ -128,6 +138,6 @@ export default {
  .wrapper {
    height: 150px;
    background-color: skyblue;
-   /* overflow: hidden; */
+   overflow: hidden;
   }
 </style>

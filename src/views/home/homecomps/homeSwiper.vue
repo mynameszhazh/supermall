@@ -3,7 +3,7 @@
     <swiper>
       <swiper-item v-for='(item, index) in cbanners' :key="index">
         <a :href="item.link" >
-          <img :src="item.image" alt="">
+          <img :src="item.image" alt="" @load="swiperload">
         </a>
       </swiper-item>
     </swiper>
@@ -29,6 +29,15 @@ export default {
   },
   data () {
     return {
+
+    }
+  },
+  methods: {
+    swiperload () {
+      if (!this.isshowfixed) {
+        this.$emit('swiperloadimg')
+        this.isshowfixed = true
+      }
     }
   }
 }

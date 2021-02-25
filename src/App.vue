@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <miantarbar class="miantarbar"></miantarbar>
+    <keep-alive exclude="detail">
     <router-view/>
+    </keep-alive>
   </div>
 </template>
 <script>
@@ -13,7 +15,6 @@ export default {
     miantarbar
   }
 }
-
 </script>
 <style lang="scss">
   @import 'assets/css/base.css';
