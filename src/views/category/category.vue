@@ -107,6 +107,9 @@
 
 <script>
 import BScroll from 'better-scroll'
+// import Fastclick from 'fastclick'
+
+// Fastclick.attach(document.body)
 
 export default {
   name: 'category',

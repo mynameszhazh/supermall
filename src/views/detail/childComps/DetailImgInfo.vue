@@ -1,5 +1,6 @@
 <template>
-    <div class="img-info" v-if="Object.keys(detailInfo).lenght !==0 ">
+    <!-- 注意点： 这里有个坑就是length不要写错了 就会报错 -->
+    <div class="img-info" v-if="Object.keys(detailInfo).length !==0 ">
       <div class="info-dec clear-fix">
         <div class="start">
         </div>
@@ -46,7 +47,7 @@ export default {
       // 为什么我这里不能直接拦截
       // if (++this.counter === this.imagesinfo) {
       // console.log('---')
-      // console.log(this.imagesinfo)
+      // console.log(this.imagesinfo) a
 
       this.$emit('imgload')
       // }

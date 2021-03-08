@@ -30,12 +30,12 @@ import homefeature from './homecomps/homefeature'
 
 import NavBar from '@/components/common/navbar/navbar'
 import TabControl from '@/components/content/TabControl/TabControl'
-import backtop from '@/components/content/backTop/backTop'
 import GoodList from '@/components/content/goods/goodList'
 import scroll from '@/components/common/scroll/scroll'
 
 import { getHomeMuiltidata, getHomeGoods } from '@/network/home/home'
 import { debounce } from 'common/debounce'
+import { backTopMixin } from 'common/mixin'
 export default {
   name: 'home',
   components: {
@@ -45,9 +45,9 @@ export default {
     homefeature,
     TabControl,
     GoodList,
-    scroll,
-    backtop
+    scroll
   },
+  mixins: [backTopMixin],
   data () {
     return {
       banners: [],
@@ -58,7 +58,6 @@ export default {
         sell: { page: 0, list: [] }
       },
       currentType: 'pop',
-      isshow: false,
       tabcontroltop: 0,
       isshowmost: false,
       isshowfixed: false,
@@ -78,6 +77,7 @@ export default {
     this.getHomeGoods('new')
     this.getHomeGoods('sell')
     // console.log(this.$refs.navbar.$el)
+    console.log(this.$store.state.cartList.length)
   },
   mounted () {
     // 重新加载图片信息，不会出现加载长度不够的bug
@@ -110,19 +110,14 @@ export default {
       this.$refs.tabcontrol1.currentIndex = index
       this.$refs.tabcontrol2.currentIndex = index
     },
-    // backtop  返回顶部使用的方法
-    backclick () {
-      // this.$refs.scroll.scroll.scrollTo(0, 0, 500)
-      this.$refs.scroll.scrollTo(0, 0, 500)
-    },
     // 显示返回顶部图标的显示和隐藏方法
     scrolll (option) {
-      this.isshow = -option.y > 1000
       if (-option.y >= this.tabcontroltop) {
         this.isshowfixed = true
       } else {
         this.isshowfixed = false
       }
+      this.backTopScr(option)
     },
     // 上拉加载
     pullingup () {

@@ -1,6 +1,7 @@
 <template>
   <div class="goods-item" @click="details">
-    <img :src="goodsItem.show.img" alt="" @load="reload">
+    <!-- 这里就是懒加载的语法v-lazy -->
+    <img v-lazy='goodsItem.show.img' alt="" @load="reload">
    <div class="goods-info">
     <p>{{goodsItem.title}}</p>
     <span class="price">{{goodsItem.price}}</span>

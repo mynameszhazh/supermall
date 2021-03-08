@@ -34,6 +34,7 @@ export default {
   methods: {
     detailnavclick (index) {
       this.currentIndex = index
+      this.$emit('indexParams', index)
     },
     backclick () {
       // this.$router.go(-1)
